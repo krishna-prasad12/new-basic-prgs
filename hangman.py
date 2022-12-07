@@ -1,23 +1,89 @@
+
 import random
-import string
 
-words=['camel','dragon','tortoise']
-rands=random.choice(words)
-emp=[]
-print(f'correct word is {rands}')
-lens=len(rands)
-for len in range(lens):
-    emp.append('_')   # print lines for each of aphabet of random word
-print(emp)
-while '_'  in emp:
-    user_input=input('guess a alphabet of the word').lower()
-    for rand in rands:
-        if rand==user_input:
-            new = rands.index(rand)
-            print(new)
-            emp[new]=user_input
-    else:
-        print('alphabet not in the word')
-# print(new)
-print(emp)
+stages = ['''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ / \  |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ /    |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+      |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+ /|   |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+  |   |
+      |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+      |
+      |
+      |
+=========
+''', '''
+  +---+
+  |   |
+      |
+      |
+      |
+      |
+=========
+''']
+end_game=False
+words=['danger','john','eat']
+choosen_word=random.choice(words)
+print(choosen_word)
+length=len(choosen_word)
+strings=[]
+lives=6
+for len in range(length):
+    strings.append('_')
 
+
+while not end_game:
+    guess=input('guess an alphabet')
+    for i in range(length):
+        choose=choosen_word[i]
+        if guess==choose:
+            strings[i]=guess
+    print(f"{''.join(strings)}")        # joins the list of words
+        # print(strings)
+    if guess not in choosen_word:
+        lives-=1
+        if lives==0:
+            print('you loose')
+            print(stages[lives])
+            end_game=True
+    if '_' not in strings:
+       print('you win the game')
+       end_game=True
+
+    print(stages[lives])
