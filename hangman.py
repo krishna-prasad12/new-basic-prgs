@@ -16,6 +16,8 @@ while '_'  in emp:
             new = rands.index(rand)
             print(new)
             emp[new]=user_input
+    else:
+        print('alphabet not in the word')
 # print(new)
 print(emp)
 
