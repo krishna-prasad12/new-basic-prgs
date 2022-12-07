@@ -1,5 +1,7 @@
 
 import random
+from hangman_logo import logo
+from words import words
 
 stages = ['''
   +---+
@@ -58,7 +60,7 @@ stages = ['''
 =========
 ''']
 end_game=False
-words=['danger','john','eat']
+# words=['danger','john','eat']
 choosen_word=random.choice(words)
 print(choosen_word)
 length=len(choosen_word)
@@ -67,7 +69,7 @@ lives=6
 for len in range(length):
     strings.append('_')
 
-
+print(logo)
 while not end_game:
     guess=input('guess an alphabet')
     for i in range(length):
