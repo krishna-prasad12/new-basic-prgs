@@ -8,8 +8,6 @@ while run_again=='yes':
     choice=input('type 1.encode 2.decode of your text\t')
     tex=input('input text u want to perform the action on \t').lower()
     shift=int(input('input the shift to be used\t'))
-
-
     def encode_text(tex,shift,choice):
         cipher_text = ''
         if choice=='encode':
