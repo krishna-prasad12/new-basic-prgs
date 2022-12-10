@@ -66,7 +66,7 @@ def game():
 
 game()
 
-'''
+''' s
 
 FAQ: Why does choice B always become choice A in every round, even when A had more followers? 
 
