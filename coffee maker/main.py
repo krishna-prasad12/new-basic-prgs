@@ -1,11 +1,12 @@
 from data import resources,MENU
-
+profit=0
 
 def inputs(choice):
     if choice=='report':
         print(f"water:{resources['water']}")
         print(f"milk:{resources['milk']}")
         print(f"coffee:{resources['coffee']}")
+        print(f"profit is {profit}$")
     elif choice=='off':
         exit()
     else:
@@ -42,24 +43,23 @@ def resource(choice):
 def process_coins(quarter,dimes,nickel,penny,choice):
     tot_amount=quarter*0.25+dimes*0.10+nickel*0.05+penny*0.01
     tot_amount=round(tot_amount,2)
-    profit=0
+    global profit
     for i in MENU:
       if i==choice:
         if tot_amount==MENU[i]['cost']:
             profit = profit +MENU[i]['cost']
-            make_cofee(choice,profit)
+            make_cofee(choice)
 
         elif tot_amount>MENU[i]['cost']:
             bal=tot_amount-MENU[i]['cost']
             print(f'collect the balance amount:{bal}$')
             profit =profit +MENU[i]['cost']
-            make_cofee(choice,profit)
+            make_cofee(choice)
         else:
             print("Sorry that's not enough money.")
 
 
-def make_cofee(choice,profit):
-    resources['Money']=profit
+def make_cofee(choice):
     for i in MENU:
         if i==choice:
             resources['water']-=MENU[i]['ingredients']['water']
